@@ -23,7 +23,7 @@ if ("serviceWorker" in navigator) {
     run().catch(error => {
       feedbackElement.classList.remove("d-hide")
       feedbackElement.classList.add("toast-error")
-      feedbackElement.innerHTML = `Error: ${error.message}`
+      feedbackElement.innerHTML = `Error: ${error.message}<br/><button class="btn" onclick="location.reload()"><i class="icon icon-refresh"></i> Retry</button>`
     })
   })
 }
@@ -39,7 +39,11 @@ async function run() {
     ? "dark"
     : "light"
 
-  navigator.serviceWorker.controller.postMessage({type: "mode", mode})
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({type: "mode", mode})
+  } else {
+    location.reload()
+  }
 
   let sendTest = false
   let subscription = await registration.pushManager.getSubscription()
