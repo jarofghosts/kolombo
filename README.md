@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200" height="200" src="https://raw.githubusercontent.com/jarofghosts/kolombo/master/web/noun-dove.svg">
+  <img width="200" height="200" src="https://raw.githubusercontent.com/jarofghosts/kolombo/master/web/noun-dove.png">
   <h1>kolombo</h1>
 </div>
 
