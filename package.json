@@ -1,0 +1,30 @@
+{
+  "name": "kolombo",
+  "version": "0.0.0",
+  "description": "notify-send web push bridge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node lib/index"
+  },
+  "author": "jesse keane",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/body-parser": "1.19.0",
+    "@types/express": "^4.17.3",
+    "@types/web-push": "3.3.0",
+    "dotenv": "8.2.0",
+    "typescript": "3.8.3"
+  },
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "express": "4.17.1",
+    "web-push": "3.4.3"
+  },
+  "prettier": {
+    "semi": false,
+    "bracketSpacing": false,
+    "trailingComma": "es5"
+  }
+}
