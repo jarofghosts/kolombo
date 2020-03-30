@@ -17,7 +17,7 @@ import {
 
 setupDotEnv()
 
-const vapidEmail = "https://github.com/jarofghosts"
+const vapidContact = "https://github.com/jarofghosts/kolombo"
 const vapidPublicKey = process.env[Env.VapidPublicKey]
 const vapidPrivateKey = process.env[Env.VapidPrivateKey]
 const subscription = process.env[Env.Subscription]
@@ -36,7 +36,7 @@ const clientScript = readFileSync(path.join(__dirname, "../web/client.js"))
   .toString()
   .replace("@MAGIC@", vapidPublicKey)
 
-webpush.setVapidDetails(vapidEmail, vapidPublicKey, vapidPrivateKey)
+webpush.setVapidDetails(vapidContact, vapidPublicKey, vapidPrivateKey)
 
 let subscriptionObject = decodeSubscription(subscription || "")
 
