@@ -18,7 +18,7 @@ self.addEventListener("push", ev => {
     if (data.message) body = data.message
     if (data.icon) icon = data.icon
   } else {
-    console.log("no data :(")
+    // if no data was included, bail early (probably a test notification)
     return
   }
 

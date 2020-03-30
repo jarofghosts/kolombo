@@ -41,6 +41,7 @@ async function run() {
 
   navigator.serviceWorker.controller.postMessage({type: "mode", mode})
 
+  let sendTest = false
   let subscription = await registration.pushManager.getSubscription()
 
   if (!subscription) {
@@ -48,6 +49,7 @@ async function run() {
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
     })
+    sendTest = true
   }
 
   const subscriptionButton = document.getElementById("toggle-subscription")
@@ -59,7 +61,7 @@ async function run() {
 
   const result = await fetch("/subscribe", {
     method: "POST",
-    body: JSON.stringify(subscription),
+    body: JSON.stringify({subscription, sendTest}),
     headers: {
       "content-type": "application/json",
     },

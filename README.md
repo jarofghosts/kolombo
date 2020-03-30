@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200" height="200" src="https://raw.githubusercontent.com/jarofghosts/kolombo/master/web/noun-dove.png">
+  <img width="200" height="200" src="https://raw.githubusercontent.com/jarofghosts/kolombo/master/web/noun-dove.png" alt="kolombo logo">
   <h1>kolombo</h1>
 </div>
 
@@ -50,9 +50,9 @@ At this point you can copy the server address from the container's logs to use l
 Open your browser to the kolombo-server web interface. In our previous example we had it run on `localhost:9999`,
 if you're following along, then, open: <a href="http://localhost:9999" target="_blank">http://localhost:9999/</a>
 
-Once opened, click the "Subscribe" button. If all goes well, you should be given an subscription key. If
-you wish to not have to re-subscribe every time you start the kolombo-server, you should add it to your `kolombo.env`
-file (or to your docker-compose yaml file) under the environment variable `KOLOMBO_SUBSCRIPTION`.
+Once opened, click the "Subscribe" button. If all goes well, you should get a test notification and a subscription
+key. If you wish to not have to re-subscribe every time you start the kolombo-server, you should add it to your
+`kolombo.env` file (or to your docker-compose yaml file) under the environment variable `KOLOMBO_SUBSCRIPTION`.
 
 ### Install [kolombo-notify-send](https://github.com/jarofghosts/kolombo-notify-send) in any containers you wish to receive notifications from
 

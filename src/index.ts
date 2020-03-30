@@ -53,13 +53,30 @@ app.get("/client.js", (req, res) => {
 app.use(express.static(path.resolve(__dirname, "../web")))
 
 app.post("/subscribe", (req, res) => {
-  const subscription = req.body
+  const subscription = req.body.subscription
 
   if (isSubscription(subscription)) {
     const id = encodeSubscription(subscription)
     subscriptionObject = subscription
 
-    res.status(201).json({ok: true, id})
+    let testNotification: undefined | string = undefined
+
+    if (req.body.sendTest) {
+      testNotification = JSON.stringify({
+        title: "kolombo test notification",
+        message: "Hello from kolombo!",
+      })
+    }
+
+    webpush
+      .sendNotification(subscriptionObject, testNotification)
+      .then(() => res.status(201).json({ok: true, id}))
+      .catch(err =>
+        res.status(500).json({
+          ok: false,
+          error: `Error sending test message: ${err.message}`,
+        })
+      )
   } else {
     res.status(400).json({ok: false, error: "Invalid subscription object"})
   }
