@@ -6,6 +6,7 @@ import * as express from "express"
 import * as webpush from "web-push"
 import {json as parseBodyAsJson} from "body-parser"
 import {config as setupDotEnv} from "dotenv"
+import {address} from "ip"
 
 import {
   encodeSubscription,
@@ -92,6 +93,6 @@ app.post("/notification", (req, res) => {
     .catch(err => res.status(500).json({ok: false, error: err.message}))
 })
 
-app.listen(3000)
-
-console.log("kolombo server started")
+app.listen(3000, () => {
+  console.log(`kolombo-server started on http://${address()}:3000/`)
+})

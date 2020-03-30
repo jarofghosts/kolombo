@@ -6,7 +6,7 @@
 Provides a [Web Push](https://developer.mozilla.org/en-US/docs/Web/API/Push_API) interface to
 system notifications within Docker.
 
-## how to use it
+## How to use it
 
 ### Generate a VAPID keypair
 
@@ -51,10 +51,10 @@ Follow [kolombo-notify-send's usage guide](https://github.com/jarofghosts/kolomb
 `KOLOMBO_SERVER` to `http://<IP>:3000` where `<IP>` is the IP (or service name if you're using docker-compose
 or a user-created network) of the `kolombo` container.
 
-## what does the name mean
+## What does the name mean?
 
 It's "dove" (or "pigeon") in Esperanto
 
-## license
+## License
 
 MIT
