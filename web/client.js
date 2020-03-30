@@ -14,10 +14,12 @@ function urlBase64ToUint8Array(base64String) {
   }
   return outputArray
 }
-const feedbackElement = document.getElementById("feedback")
+
+let feedbackElement
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
+    feedbackElement = document.getElementById("feedback")
     run().catch(error => {
       feedbackElement.classList.add("toast-error")
       feedbackElement.innerHTML = `Error: ${error.message}`
