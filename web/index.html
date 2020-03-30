@@ -5,11 +5,42 @@
     <link rel="stylesheet" href="/css/spectre.min.css" />
     <link rel="stylesheet" href="/css/spectre-exp.min.css" />
     <link rel="stylesheet" href="/css/spectre-icons.min.css" />
+    <style type="text/css">
+      img.hide {
+        display: none;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: black;
+          color: #ccc;
+        }
+        img#logo {
+          display: none;
+        }
+        img#dark-mode-logo {
+          display: block;
+        }
+      }
+    </style>
   </head>
   <body>
     <div align="center">
       <div style="margin: 2em">
-        <img src="/noun-dove.svg" width="200" height="200" alt="kolombo" />
+        <img
+          id="logo"
+          src="/noun-dove.svg"
+          width="200"
+          height="200"
+          alt="kolombo"
+        />
+        <img
+          class="hide"
+          id="dark-mode-logo"
+          src="/noun-dove-inverse.svg"
+          width="200"
+          height="200"
+          alt="kolombo"
+        />
       </div>
       <div style="margin: 2em">
         <div id="feedback" class="toast d-hide"></div>

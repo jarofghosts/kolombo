@@ -35,6 +35,12 @@ async function run() {
 
   await navigator.serviceWorker.ready
 
+  const mode = window.matchMedia("(prefers-color-scheme: dark").matches
+    ? "dark"
+    : "light"
+
+  navigator.serviceWorker.controller.postMessage({type: "mode", mode})
+
   let subscription = await registration.pushManager.getSubscription()
 
   if (!subscription) {

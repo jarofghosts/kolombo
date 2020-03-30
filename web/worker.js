@@ -1,5 +1,12 @@
+let useLightIcon = false
+
+self.addEventListener("message", ev => {
+  if (ev.data.type === "mode") {
+    useLightIcon = ev.data.mode === "dark"
+  }
+})
+
 self.addEventListener("push", ev => {
-  const useLightIcon = self.matchMedia("(prefers-color-scheme: dark)").matches
   let title = "kolombo"
   let body = "message from kolombo"
   let icon = `https://raw.githubusercontent.com/jarofghosts/kolombo/master/web/noun-dove${
