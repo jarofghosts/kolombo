@@ -45,7 +45,7 @@ Once opened, click the "Subscribe" button. If all goes well, you should be given
 you wish to not have to re-subscribe every time you start the kolombo-server, you should add it to your `kolombo.env`
 file (or to your docker-compose yaml file) under the environment variable `KOLOMBO_SUBSCRIPTION`.
 
-### Install [kolombo-notify-send](https://github.com/jarofghosts/kolombo-notify-send) in any containers you wish to receive notifications about.
+### Install [kolombo-notify-send](https://github.com/jarofghosts/kolombo-notify-send) in any containers you wish to receive notifications from
 
 Follow [kolombo-notify-send's usage guide](https://github.com/jarofghosts/kolombo-notify-send#usage), setting
 `KOLOMBO_SERVER` to `http://<IP>:3000` where `<IP>` is the IP (or service name if you're using docker-compose
