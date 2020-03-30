@@ -51,7 +51,7 @@ Open your browser to the kolombo-server web interface. In our previous example w
 if you're following along, then, open: <a href="http://localhost:9999" target="_blank">http://localhost:9999/</a>
 
 Once opened, click the "Subscribe" button. If all goes well, you should get a test notification and a subscription
-key. If you wish to not have to re-subscribe every time you start the kolombo-server, you should add it to your
+ID. If you wish to not have to re-subscribe every time you start the kolombo-server, you should add it to your
 `kolombo.env` file (or to your docker-compose yaml file) under the environment variable `KOLOMBO_SUBSCRIPTION`.
 
 ### Install [kolombo-notify-send](https://github.com/jarofghosts/kolombo-notify-send) in any containers you wish to receive notifications from
