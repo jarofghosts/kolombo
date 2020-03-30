@@ -21,6 +21,7 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     feedbackElement = document.getElementById("feedback")
     run().catch(error => {
+      feedbackElement.classList.remove("d-hide")
       feedbackElement.classList.add("toast-error")
       feedbackElement.innerHTML = `Error: ${error.message}`
     })
@@ -41,41 +42,48 @@ async function run() {
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
     })
-
-    const result = await fetch("/subscribe", {
-      method: "POST",
-      body: JSON.stringify(subscription),
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-    const {ok, id, error} = await result.json()
-
-    if (ok) {
-      feedbackElement.classList.add("toast-success")
-      feedbackElement.innerHTML = `
-      <pre class="code" data-lang="Shell">
-        <code>KOLOMBO_SUBSCRIPTION=${id}</code>
-      </pre>
-      <br/>
-      <input readonly type="text" value="${id}" class="form-input" />
-      `
-    } else {
-      throw new Error(error || "Error subscribing")
-    }
   }
 
   const subscriptionButton = document.getElementById("toggle-subscription")
+  subscriptionButton.classList.remove("loading")
 
-  subscriptionButton.addEventListener("click", unsubscribe)
+  if (!subscription) {
+    return unsubscribe()
+  }
+
+  const result = await fetch("/subscribe", {
+    method: "POST",
+    body: JSON.stringify(subscription),
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+  const {ok, id, error} = await result.json()
+
+  if (ok) {
+    feedbackElement.classList.remove("d-hide")
+    feedbackElement.classList.add("toast-info")
+    feedbackElement.innerHTML = `
+      <h4>Subscription ID</h4>
+      <input id="subscription-id" readonly autofocus="autofocus" onfocus="this.select()" type="text" value="${id}" class="form-input" />
+      `
+  } else {
+    throw new Error(error || "Error subscribing")
+  }
+
   subscriptionButton.disabled = false
+  subscriptionButton.addEventListener("click", unsubscribe)
 
   function unsubscribe() {
+    feedbackElement.classList.add("d-hide")
     subscriptionButton.removeEventListener("click", unsubscribe)
-    subscription.unsubscribe()
-    subscriptionButton.textContent = "Subscribe"
+    if (subscription) {
+      subscription.unsubscribe()
+    }
+    subscriptionButton.innerHTML = '<i class="icon icon-plus"></i> Subscribe'
     subscriptionButton.addEventListener("click", subscribe)
     subscriptionButton.classList.add("btn-primary")
+    subscriptionButton.disabled = false
   }
 
   function subscribe() {
