@@ -19,7 +19,7 @@
     "typescript": "3.8.3"
   },
   "dependencies": {
-    "body-parser": "2.3.0",
+    "body-parser": "2.4.0",
     "express": "5.2.1",
     "ip": "1.1.9",
     "web-push": "3.4.3"
